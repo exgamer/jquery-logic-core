@@ -57,6 +57,19 @@ ModalHelper.prototype.show = function (html) {
 var RequestHelper = function() {};
 
 /**
+ * Возвращает csrf данные
+ * @returns {{}}
+ */
+RequestHelper.prototype.getCsrfData = function () {
+    let csrfParam = $('meta[name="csrf-param"]').attr("content");
+    let csrfToken = $('meta[name="csrf-token"]').attr("content");
+    let csrf = { };
+    csrf[csrfParam] = csrfToken;
+
+    return csrf;
+};
+
+/**
  * Отправка ajax
  * standard ajax params
  * @param params
